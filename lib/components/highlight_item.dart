@@ -40,7 +40,10 @@ class HighlightItem extends StatelessWidget {
                 Text("R\$ $itemPrice"),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Text(itemDescription),
+                  child: Text(
+                    itemDescription,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,

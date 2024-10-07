@@ -26,15 +26,32 @@ class HighlightPage extends StatelessWidget {
               ),
             ),
           ),
-          SliverList.builder(
-              itemCount: item.length,
-              itemBuilder: (context, index) {
-                return HighlightItem(
-                    imageURI: item[index]["image"],
-                    itemTitle: item[index]["name"],
-                    itemPrice: item[index]["price"],
-                    itemDescription: item[index]["description"]);
-              }),
+          MediaQuery.of(context).orientation == Orientation.landscape
+              ? SliverGrid.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 1.0,
+                  ),
+                  itemCount: item.length,
+                  itemBuilder: (context, index) {
+                    return HighlightItem(
+                        imageURI: item[index]["image"],
+                        itemTitle: item[index]["name"],
+                        itemPrice: item[index]["price"],
+                        itemDescription: item[index]["description"]);
+                  },
+                )
+              : SliverList.builder(
+                  itemCount: item.length,
+                  itemBuilder: (context, index) {
+                    return HighlightItem(
+                        imageURI: item[index]["image"],
+                        itemTitle: item[index]["name"],
+                        itemPrice: item[index]["price"],
+                        itemDescription: item[index]["description"]);
+                  }),
         ],
       ),
     );
